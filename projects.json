@@ -1,0 +1,9 @@
+{
+    "projects" : [
+        {
+            "name": "STT", 
+            "status": "active",
+            "description":"Lightweight Python/Sql time tracker"
+        }
+    ]
+}

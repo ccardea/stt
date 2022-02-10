@@ -20,17 +20,13 @@ create_tbl_records_sql = """
     );
 """
 
-create_idx1_sql = """
+create_idx_sql = """
     CREATE INDEX IF NOT EXISTS projIdx
         ON records (project);
-"""
 
-create_idx2_sql = """
     CREATE INDEX IF NOT EXISTS actIdx
         ON records (activity);
-"""
 
-create_idx3_sql = """
     CREATE INDEX IF NOT EXISTS startIdx
         ON records (start);
 """
@@ -40,8 +36,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
     cur.execute(create_tbl_records_sql)
     conn.commit()
-    cur.execute(create_idx1_sql)
-    cur.execute(create_idx2_sql)
-    cur.execute(create_idx3_sql)
+    cur.executescript(create_idx_sql)
+    
     conn.commit()
     conn.close()

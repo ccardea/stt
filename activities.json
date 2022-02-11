@@ -1,24 +1,7 @@
-{
-    "activities" : [
-        {
-            "name":"learn",
-            "description": "Course work related"
-        },
-        {
-            "name": "research",
-            "description": "Internet search, reading docs, etc."
-        },
-        {
-            "name": "admin",
-            "description": "installing software, downloading files, system maintenance, etc"
-        },
-        {
-            "name": "develop",
-            "description": "Design, code, test."
-        },
-        {
-            "name": "maintain",
-            "description": "bugfixes, revisions, issues, etc"
-        }
-    ]
-}
+[
+    "admin",
+    "develop",
+    "learn",
+    "maintain",
+    "research"
+]

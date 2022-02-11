@@ -1,9 +1,12 @@
-{
-    "projects" : [
-        {
-            "name": "STT", 
-            "status": "active",
-            "description":"Lightweight Python/Sql time tracker"
-        }
-    ]
-}
+[
+    {
+        "name": "test1", 
+        "status": "active",
+        "description":"Lightweight Python/Sql time tracker"
+    },
+    {
+        "name": "test2",
+        "status": "maint",
+        "description": "lightweight test project"
+    }
+]

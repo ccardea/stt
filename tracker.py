@@ -45,14 +45,17 @@ class Tracker():
         for a in enumerate(self.activities):
             choices.append(a[0])
             print(a[0], ":", a[1])
+        while True:
+            choice = input("Please enter the actvity number: ")
+            if not choice.isdigit():
+                continue
+            elif int(choice) not in set(choices):
+                print("What was that?")
+                continue
+            else:
+                break
+        return self.activities[int(choice)]
 
-
-
-if __name__ == "__main__":
-    print("Welcome to Simple Time Tracker")
-    stt = Tracker()
-    activity = stt.choose_activity()
-    #print("You chose project", project)
 
 
 

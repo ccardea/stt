@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Project 0", 
+        "status": "active",
+        "description":"Flyweight test project"
+    },
+    {
+        "name": "Project 1",
+        "status": "active",
+        "description": "Lightweight test project"
+    },
+    {
+        "name": "Project 2",
+        "status": "active",
+        "description": "Middle weight test project"
+    },
+    {
+        "name": "Project 3",
+        "status": "archive",
+        "description": "Heavy weight test project"
+    }
+]

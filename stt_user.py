@@ -14,7 +14,7 @@ def chooseProject(projects):
     Returns: integer
         index of projects list
     """
-    print("Current Projects:")
+    print("Please choose a project:")
     return getInput(projects)
 
 def chooseActivity(activities):
@@ -25,7 +25,7 @@ def chooseActivity(activities):
     Returns: integer
         index of choices list
     """
-    print("What kind of work are you doing?")
+    print("Please choose an activity:")
     return getInput(activities)
 
 def chooseStart(choices):
@@ -35,7 +35,7 @@ def chooseStart(choices):
         choices: list
     Returns: integer index of choices list
     """
-    print("Choose start to begin tracking, or exit without tracking")
+    print("Please choose start to begin tracking.")
     return getInput(choices)
 
 def chooseStop(choices):
@@ -43,7 +43,7 @@ def chooseStop(choices):
     Allows user to stop or pause recording the current activity
     Returns: integer index of choices list
     """
-    print("Choose pause to return later or stop to end this activity.")
+    print("Please choose stop to end or pause to return later")
     return getInput(choices)
 
 def getComment():
@@ -51,7 +51,7 @@ def getComment():
     Get comment from user input
     Returns: string
     """
-    print("Please enter a comment for this activity(limit 50 characters).")
+    print("Please enter a comment (50 characters or less).")
     while True:
         comment = input(">>")
         if not validate(comment):

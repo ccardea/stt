@@ -12,8 +12,9 @@ class UserTestCase(unittest.TestCase):
 
     def setUp(self):
         self.choices = ["option1", "option2","option3"]
+        print("\n")
 
-    @unittest.skip("Skipped testGetInput")
+    # @unittest.skip("Skipped testGetInput")
     def testGetInput(self):   
         choice = user.getInput(self.choices)
         self.assertIsInstance(choice,int)
@@ -58,11 +59,11 @@ class UserTestCase(unittest.TestCase):
     
 class UserTestCase2(unittest.TestCase):
 
-    @unittest.skip("Skipped testGetComent")
+    # @unittest.skip("Skipped testGetComent")
     def testGetComment(self):
         comment = user.getComment()
-        self.assertTrue(comment.isalnum)
-        self.assertTrue(comment.isprintable)
+        self.assertIsInstance(comment, str)
+        self.assertTrue(comment.isprintable())
         self.assertTrue(len(comment) <= 50)
         return None
 

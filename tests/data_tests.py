@@ -9,7 +9,7 @@ import stt_data as data
 class DataTestCase(unittest.TestCase):
     
     def setUp(self):
-        file = "/home/ccardea/repos/stt/__data__/test_files.json"
+        file = "/home/ccardea/repos/stt/tests/data/test_files.json"
         data.Files = data.loadFiles(file)
         return None
 

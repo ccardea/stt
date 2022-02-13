@@ -46,24 +46,6 @@ class TerminalUser():
         print("Please choose stop to end or pause to return later")
         return self.getInput(choices)
 
-    def getComment(self):
-        """
-        Get comment from user input
-        Returns: string
-        """
-        print("Please enter a comment (50 characters or less).")
-        while True:
-            comment = input(">>")
-            if not self.validate(comment):
-                print("Printable alphanumeric characters only please.")
-                continue
-            else:
-                break
-        if len(comment) <= 50:
-            return comment
-        else:
-            return comment[0:50]
-
     def validate(self, comment):
         words = comment.split()
         for word in words:
@@ -97,7 +79,6 @@ class TerminalUser():
         Get Input from user
         Parameters:
             choices: list
-            prompt: string input prompt
         Returns: integer index of choices list
         """
         prompt = "Please enter the number that identifies your choice: "
@@ -114,3 +95,20 @@ class TerminalUser():
             else:
                 break
         return int(choice)
+    def getComment(self):
+        """
+        Get comment from user input
+        Returns: string
+        """
+        print("Please enter a comment (50 characters or less).")
+        while True:
+            comment = input(">>")
+            if not self.validate(comment):
+                print("Printable alphanumeric characters only please.")
+                continue
+            else:
+                break
+        if len(comment) <= 50:
+            return comment
+        else:
+            return comment[0:50]

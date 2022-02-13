@@ -28,22 +28,28 @@ class TerminalUser():
         print("Please choose an activity:")
         return self.getInput(activities)
 
-    def chooseStart(self,choices):
+    def chooseStart(self,choices,text):
         """
         Choose to start or exit
         Parameters:
             choices: list
+            text: dictionary
+                Contains project and activity as key:value pairs
         Returns: integer index of choices list
         """
-        print("Please choose start to begin tracking.")
-        return self.getInput(choices)
+        print("Please verify project and activity before continuing.")
+        print("----------------------")
+        for key in text:
+            print(key,":", text[key]);
+        print("----------------------")
+        return self.getInput(choices);
 
     def chooseStop(self, choices):
         """
         Allows user to stop or pause recording the current activity
         Returns: integer index of choices list
         """
-        print("Please choose stop to end or pause to return later")
+        print("Please choose Stop to end or pause tracking.")
         return self.getInput(choices)
 
     def validate(self, comment):
@@ -71,7 +77,7 @@ class TerminalUser():
                 choices: list
             Returns: integer index of choices list
         """
-        print("Where to next?")
+        print("What would you like to do next?")
         return self.getInput(choices)
 
     def getInput(self, choices):
@@ -94,6 +100,7 @@ class TerminalUser():
                 continue
             else:
                 break
+        print("-----------------------------------------------------\n");
         return int(choice)
     def getComment(self):
         """

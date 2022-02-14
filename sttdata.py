@@ -5,51 +5,63 @@ Created 2022-02-11
 """
 import sqlite3
 import json
+import os.path
 
-Files = {}
+class STTData():
 
-def loadFiles(filename):
-    with open(filename,"r") as fp:
-        data = json.load(fp)
-    return data
+    __slots__ = ("test", "dir");
+
+    def __init__(self, test=False):
+        self.test = test;
+        self.dir = os.path.dirname(os.path.realpath(__file__));
+        return;
     
-def getActiveProjects():
-    """
-    Read projects from data store
-    Returns: list
-    """
-    with open(Files['projects'],'r') as fp:
-        projects = json.load(fp)
-    active = []
-    for p in projects:
-        if p['status'] == "active":
-            active.append(p["name"])
-    return active
+    def getActiveProjects(self):
+        """
+        Read projects from data store
+        Returns: list
+        """
+        if self.test:
+            projectFile = os.path.join(self.dir, 'tests/data/projects.json');
+        else:
+            projectFile =os.path.join(self.dir, '__data__/projects.json');
 
-def getActivities():
-    """
-    Read activities from data store
-    Returns: list
-    """
-    with open(Files['activities'], "r") as fp:
-        activities = json.load(fp)
-    return activities
+        with open(projectFile,'r') as fp:
+            projects = json.load(fp)
+        active = []
+        for p in projects:
+            if p['status'] == "active":
+                active.append(p["name"])
+        return active
 
-def writeRecord(record):
-    """
-    Write record to database
-    Parameters:
-        record: tuple of values to write
-    Returns: Success or Failure?
-    """
-    return
+    def getActivities(self):
+        """
+        Read activities from data store
+        Returns: list
+        """
+        if self.test:
+            activityFile = os.path.join(self.dir, 'tests/data/activities.json');
+        else:
+            activityFile = os.path.join(self.dir, '__data__/activities.json');
+        with open(activityFile, "r") as fp:
+            activities = json.load(fp);
+        return activities;
 
-def getRecords(project=None,range=None):
-    """
-    Parameters:
-        range: list?
-            range of data to choose from
-    Returns: list of rows?
-    """
-    return
+    def writeRecord(record):
+        """
+        Write record to database
+        Parameters:
+            record: tuple of values to write
+        Returns: Success or Failure?
+        """
+        return
+
+    def getRecords(project=None,range=None):
+        """
+        Parameters:
+            range: list?
+                range of data to choose from
+        Returns: list of rows?
+        """
+        return
 

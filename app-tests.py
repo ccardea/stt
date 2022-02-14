@@ -80,8 +80,7 @@ class AppTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.file = "/home/ccardea/repos/stt/tests/data/test_files.json"
-        cls.App = app.SimpleTimeTracker(cls.file)
+        cls.App = app.SimpleTimeTracker(test=True)
         cls.App.user = MockUser()
         return None
 
@@ -89,7 +88,7 @@ class AppTestCase(unittest.TestCase):
         self.App.flags = 3;
 
     def testInit(self):
-        self.App.__init__(self.file);
+        self.App.__init__(test=True);
         projects = self.App.projects;
         self.assertIsInstance(projects, list);
         self.assertTrue(len(projects), 3);

@@ -15,10 +15,6 @@ class TimeRecordTestCase(unittest.TestCase):
         cls.record = app.TimeRecord()
         return None
 
-    def setUp(self):
-        
-        return None
-
     def testInit(self):
         self.record.__init__()
         self.assertIsNone(self.record.project)
@@ -27,6 +23,11 @@ class TimeRecordTestCase(unittest.TestCase):
         self.assertIsNone(self.record.stop)
         self.assertIsNone(self.record.duration)
         self.assertIsNone(self.record.comment)
+        return;
+
+    def testSetStart(self):
+        self.record.setStart();
+        self.assertIsInstance(self.record.start, datetime.datetime);
         return;
 
     def testSetStop(self):
@@ -64,7 +65,7 @@ class MockUser():
         self.chooseStartCalls +=1;
         return choice;
 
-    def chooseNext(self, choices):
+    def chooseNext(self, choices, text):
         choice = self.chooseNextCalls;
         self.chooseNextCalls +=1;
         return choice;
@@ -72,7 +73,7 @@ class MockUser():
     def chooseStop(self, choices):
         return 0;
 
-    def getComment(self):
+    def getComment(self, text):
         return "comment";
 
 class AppTestCase(unittest.TestCase):
@@ -137,17 +138,11 @@ class AppTestCase(unittest.TestCase):
         self.assertTrue(self.App.flags & 8);
         return
 
-    def testChooseStop(self):
-        self.App.record.setStart();
-        self.App.chooseStop();
-        self.assertIsNotNone(self.App.previous);
-        return;
-
     def testChooseNext(self):
         self.App.record.project = "Project 1";
         self.App.record.activity = "Activity 1";
         self.App.record.setStart();
-        self.App.chooseStop();
+        self.App.getComment()
         choice = self.App.chooseNext();
         self.assertEqual(choice, 0);
         self.assertEqual(self.App.record.project, self.App.previous[0])
@@ -175,8 +170,9 @@ class AppTestCase(unittest.TestCase):
 
     def testGetComment(self):
         self.App.getComment();
-        self.assertIsInstance(self.App.record.comment, str);
-        
+        self.assertIsNotNone(self.App.previous);
+        self.assertIsInstance(self.App.previous[5], str);
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -39,25 +39,15 @@ class UserTestCase(unittest.TestCase):
         return None
     
     def testChooseStart(self):
-        choice = self.user.chooseStart(self.choices)
-        self.assertIsInstance(choice,int)
-        self.assertTrue(choice < len(self.choices))
-        return None
-    
-    def testChooseStop(self):
-        choice = self.user.chooseStop(self.choices)
-        self.assertIsInstance(choice,int)
-        self.assertTrue(choice < len(self.choices))
-        return None
-    
-    def testChooseResume(self):
-        choice = self.user.chooseResume(self.choices)
-        self.assertIsInstance(choice,int)
+        text = ("Project 1", "Activity 1")
+        choice = self.user.chooseStart(self.choices, text)
+        self.assertIsInstance(choice,int);
         self.assertTrue(choice < len(self.choices))
         return None
     
     def testChooseNext(self):
-        choice = self.user.chooseNext(self.choices)
+        text = ("Project 1", "Activity 1", "00:30:29.000")
+        choice = self.user.chooseNext(self.choices, text)
         self.assertIsInstance(choice,int)
         self.assertTrue(choice < len(self.choices))
         return None
@@ -71,7 +61,8 @@ class UserTestCase2(unittest.TestCase):
 
     # @unittest.skip("Skipped testGetComent")
     def testGetComment(self):
-        comment = self.user.getComment()
+        text = ("Project 1", "Activity 1")
+        comment = self.user.getComment(text)
         self.assertIsInstance(comment, str)
         self.assertTrue(comment.isprintable())
         self.assertTrue(len(comment) <= 50)

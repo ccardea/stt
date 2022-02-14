@@ -44,32 +44,6 @@ class TerminalUser():
         print("----------------------")
         return self.getInput(choices);
 
-    def chooseStop(self, choices):
-        """
-        Allows user to stop or pause recording the current activity
-        Returns: integer index of choices list
-        """
-        print("Please choose Stop to end or pause tracking.")
-        return self.getInput(choices)
-
-    def validate(self, comment):
-        words = comment.split()
-        for word in words:
-            if not word.isalnum() or not word.isprintable():
-                return False
-        return True 
-
-
-    def chooseResume(self, choices):
-        """
-        Allow user to resume previous activity or stop
-            Parameters:
-                choices: list
-            Returns: integer index of choices list
-        """
-        print("Resume previous activity or stop")
-        return self.getInput(choices)
-
     def chooseNext(self, choices, text):
         """ 
         Choose next action (new activity, new project, quit program).
@@ -128,3 +102,10 @@ class TerminalUser():
             return comment
         else:
             return comment[0:50]
+
+    def validate(self, comment):
+        words = comment.split()
+        for word in words:
+            if not word.isalnum() or not word.isprintable():
+                return False
+        return True

@@ -71,8 +71,6 @@ class SimpleTimeTracker():
         return choice;
 
     def stop(self):
-        # choices = ["Stop"];
-        # choice = self.user.chooseStop(choices);
         self.record.setStop();
         data.writeRecord(self.record.copy());
         self.previous = self.record.copy();
@@ -116,7 +114,6 @@ class SimpleTimeTracker():
             if self.flags != 0:
                 continue;
             self.getComment();
-            # self.chooseStop();
             os.system('clear')
             self.chooseNext();
         return;

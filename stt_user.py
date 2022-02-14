@@ -33,14 +33,14 @@ class TerminalUser():
         Choose to start or exit
         Parameters:
             choices: list
-            text: dictionary
-                Contains project and activity as key:value pairs
+            text: tuple
+                Contains project and activity names
         Returns: integer index of choices list
         """
         print("Please verify project and activity before continuing.")
         print("----------------------")
-        for key in text:
-            print(key,":", text[key]);
+        print(text[0])
+        print(text[1])
         print("----------------------")
         return self.getInput(choices);
 
@@ -63,20 +63,25 @@ class TerminalUser():
     def chooseResume(self, choices):
         """
         Allow user to resume previous activity or stop
-        Parameters:
-            choices: list
-        Returns: integer index of choices list
-        """
-        print("Resume previous activity or stop")
-        return self.getInput(choices)
-
-    def chooseNext(self, choices):
-        """ 
-        Choose next action (new activity, new project, quit program).
             Parameters:
                 choices: list
             Returns: integer index of choices list
         """
+        print("Resume previous activity or stop")
+        return self.getInput(choices)
+
+    def chooseNext(self, choices, text):
+        """ 
+        Choose next action (new activity, new project, quit program).
+            Parameters:
+                choices: list
+                text: tuple containing project and activity names and duration
+            Returns: integer index of choices list
+        """
+        print("----------------------------------------")
+        print("Finished tracking", text[0], text[1]);
+        print("Time recorded:", str(text[2]))
+        print("-----------------------------------------")
         print("What would you like to do next?")
         return self.getInput(choices)
 
@@ -102,12 +107,16 @@ class TerminalUser():
                 break
         print("-----------------------------------------------------\n");
         return int(choice)
-    def getComment(self):
+    def getComment(self, text):
         """
         Get comment from user input
+        Parameters:
+            text: tuple
+                Contains project and activity names
         Returns: string
         """
-        print("Please enter a comment (50 characters or less).")
+        print("Tracking:", text[0], text[1]);
+        print("Please type a short comment and press enter to stop tracking.")
         while True:
             comment = input(">>")
             if not self.validate(comment):

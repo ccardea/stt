@@ -4,6 +4,7 @@ Author C. Cardea
 Created 2022-02-12
 """
 from datetime import datetime
+import os
 import stt_data as data
 import stt_user
 
@@ -59,7 +60,7 @@ class SimpleTimeTracker():
 
     def chooseStart(self):
         choices = ["Start Tracking", "Edit Project", "Edit Activity", "Exit Program"];
-        text = {"Project": self.record.project, "Activity": self.record.activity}
+        text = (self.record.project, self.record.activity)
         choice = self.user.chooseStart(choices, text);
         if choice == 0:
             self.record.setStart();
@@ -69,9 +70,9 @@ class SimpleTimeTracker():
             self.flags = 8;
         return choice;
 
-    def chooseStop(self):
-        choices = ["Stop"];
-        choice = self.user.chooseStop(choices);
+    def stop(self):
+        # choices = ["Stop"];
+        # choice = self.user.chooseStop(choices);
         self.record.setStop();
         data.writeRecord(self.record.copy());
         self.previous = self.record.copy();
@@ -80,7 +81,8 @@ class SimpleTimeTracker():
 
     def chooseNext(self):
         choices = ["Resume previous activity", "New project", "New activity", "Exit program"];
-        choice = self.user.chooseNext(choices);
+        text = (self.previous[0], self.previous[1], self.previous[4]);
+        choice = self.user.chooseNext(choices,text);
         if choice == 0:
             self.flags = 0;
             self.record.project = self.previous[0];
@@ -96,25 +98,37 @@ class SimpleTimeTracker():
         return choice;
 
     def getComment(self):
-        self.record.comment = self.user.getComment();
+        text = (self.record.project, self.record.activity)
+        self.record.comment = self.user.getComment(text);
+        self.stop();
         return;
         
     def track(self):
         while not self.flags & 8:
             if self.flags & 1:
+                os.system('clear');
                 self.getProject();
             if self.flags & 2:
+                os.system('clear');
                 self.getActivity();
+            os.system('clear');
             self.chooseStart();
             if self.flags != 0:
                 continue;
             self.getComment();
-            self.chooseStop();
+            # self.chooseStop();
+            os.system('clear')
             self.chooseNext();
         return;
 
 if __name__ == "__main__":
-    print("\nWelcome to Simple Time Tracker\n")
+    os.system('clear')
+    print("    ###################################");
+    print("    #                                 #")
+    print("    # Welcome to Simple Time Tracker  #")
+    print("    #                                 #")
+    print("    ###################################\n")
+    input("Please press enter to continue: ");
     stt = SimpleTimeTracker("/home/ccardea/repos/stt/tests/data/test_files.json");
     stt.track();
     print("Goodbye!")

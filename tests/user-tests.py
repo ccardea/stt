@@ -5,7 +5,7 @@ Created 02-10-2022
 Tests for input functions,  unit tests might work here
 """
 
-import stt_user
+import sttuser
 import unittest
 
 class UserTestCase(unittest.TestCase):

@@ -5,8 +5,8 @@ Created 2022-02-12
 """
 from datetime import datetime
 import os
-import stt_data as data
-import stt_user
+import sttdata as data
+import sttuser
 
 class TimeRecord():
 
@@ -44,7 +44,7 @@ class SimpleTimeTracker():
         self.activities = data.getActivities();
         self.flags = 3;
         self.record = TimeRecord();
-        self.user = stt_user.TerminalUser();
+        self.user = sttuser.TerminalUser();
         self.previous = None;
         return None;
 

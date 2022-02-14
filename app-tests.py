@@ -4,7 +4,7 @@ Author C. Cardea
 Created 2022-02-12
 """
 
-import stt_app as app
+import stt as app
 import unittest
 import random, datetime
 

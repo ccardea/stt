@@ -4,7 +4,7 @@ Author: C. Cardea
 Created 2022-02-12
 """
 import unittest
-import stt_data as data
+import sttdata as data
 
 class DataTestCase(unittest.TestCase):
     

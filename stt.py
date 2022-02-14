@@ -5,7 +5,7 @@ Created 2022-02-12
 """
 from datetime import datetime
 import os
-import sttdata as data
+import sttdata 
 import sttuser
 
 class TimeRecord():
@@ -36,12 +36,12 @@ class TimeRecord():
 
 class SimpleTimeTracker():
 
-    __slots__ = ("projects", "activities", "flags", "record", "user", "previous");
+    __slots__ = ("projects", "activities", "flags", "record", "previous", "user", "data");
 
-    def __init__(self, filename):
-        data.Files = data.loadFiles(filename);
-        self.projects = data.getActiveProjects();
-        self.activities = data.getActivities();
+    def __init__(self, test=False):
+        self.data = sttdata.STTData(test);
+        self.projects = self.data.getActiveProjects();
+        self.activities = self.data.getActivities();
         self.flags = 3;
         self.record = TimeRecord();
         self.user = sttuser.TerminalUser();
@@ -72,7 +72,7 @@ class SimpleTimeTracker():
 
     def stop(self):
         self.record.setStop();
-        data.writeRecord(self.record.copy());
+        self.data.writeRecord(self.record.copy());
         self.previous = self.record.copy();
         self.record.__init__();
         return;
@@ -88,7 +88,6 @@ class SimpleTimeTracker():
         elif choice == 1:
             self.flags = 3;
         elif choice == 2:
-            self.record.project = self.previous[0];
             self.flags = 2;
             self.record.project = self.previous[0];
         elif choice == 3:
@@ -102,6 +101,7 @@ class SimpleTimeTracker():
         return;
         
     def track(self):
+        self.user.displayStart();
         while not self.flags & 8:
             if self.flags & 1:
                 self.getProject();
@@ -115,6 +115,6 @@ class SimpleTimeTracker():
         return;
 
 if __name__ == "__main__":
-    stt = SimpleTimeTracker("/home/ccardea/repos/stt/tests/data/test_files.json");
+    stt = SimpleTimeTracker(test=True);
     stt.track();
     print("Goodbye!")

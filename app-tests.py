@@ -4,7 +4,7 @@ Author C. Cardea
 Created 2022-02-12
 """
 
-import stt as app
+import sttdata, stt as app
 import unittest
 import random, datetime
 
@@ -76,11 +76,32 @@ class MockUser():
     def getComment(self, text):
         return "comment";
 
+class MockData(sttdata.STTData):
+
+    __slots__ = ();
+    
+    def __init__(self):
+        sttdata.STTData.__init__(self, test=True);
+        return;
+
+    def writeRecord(self, record):
+        return;
+
+class MockTimeTracker(app.SimpleTimeTracker):
+
+    __slots__ = ();
+
+    def __init__(self):
+        app.SimpleTimeTracker.__init__(self, test=True);
+        self.data = MockData();
+        self.projects = self.data.getActiveProjects();
+        self.activities = self.data.getActivities();
+
 class AppTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.App = app.SimpleTimeTracker(test=True)
+        cls.App = MockTimeTracker()
         cls.App.user = MockUser()
         return None
 
@@ -88,7 +109,7 @@ class AppTestCase(unittest.TestCase):
         self.App.flags = 3;
 
     def testInit(self):
-        self.App.__init__(test=True);
+        self.App.__init__();
         projects = self.App.projects;
         self.assertIsInstance(projects, list);
         self.assertTrue(len(projects), 3);

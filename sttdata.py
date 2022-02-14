@@ -47,7 +47,7 @@ class STTData():
             activities = json.load(fp);
         return activities;
 
-    def writeRecord(record):
+    def writeRecord(self, record):
         """
         Write record to database
         Parameters:

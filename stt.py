@@ -104,28 +104,17 @@ class SimpleTimeTracker():
     def track(self):
         while not self.flags & 8:
             if self.flags & 1:
-                os.system('clear');
                 self.getProject();
             if self.flags & 2:
-                os.system('clear');
                 self.getActivity();
-            os.system('clear');
             self.chooseStart();
             if self.flags != 0:
                 continue;
             self.getComment();
-            os.system('clear')
             self.chooseNext();
         return;
 
 if __name__ == "__main__":
-    os.system('clear')
-    print("    ###################################");
-    print("    #                                 #")
-    print("    # Welcome to Simple Time Tracker  #")
-    print("    #                                 #")
-    print("    ###################################\n")
-    input("Please press enter to continue: ");
     stt = SimpleTimeTracker("/home/ccardea/repos/stt/tests/data/test_files.json");
     stt.track();
     print("Goodbye!")

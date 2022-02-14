@@ -3,8 +3,19 @@ Simple Time Tracker
 Author C. Cardea
 Created 2022-02-11
 """
+import os
 
 class TerminalUser():
+
+    def displayStart(self):
+        os.system('clear')
+        print("    ###################################");
+        print("    #                                 #")
+        print("    # Welcome to Simple Time Tracker  #")
+        print("    #                                 #")
+        print("    ###################################\n")
+        input("Please press enter to continue: ");
+        return;
 
     def chooseProject(self, projects):
         """
@@ -14,6 +25,7 @@ class TerminalUser():
         Returns: integer
             index of projects list
         """
+        os.system('clear')
         print("Please choose a project:")
         return self.getInput(projects)
 
@@ -25,6 +37,7 @@ class TerminalUser():
         Returns: integer
             index of choices list
         """
+        os.system('clear')
         print("Please choose an activity:")
         return self.getInput(activities)
 
@@ -37,6 +50,7 @@ class TerminalUser():
                 Contains project and activity names
         Returns: integer index of choices list
         """
+        os.system('clear')
         print("Please verify project and activity before continuing.")
         print("----------------------")
         print(text[0])
@@ -52,6 +66,7 @@ class TerminalUser():
                 text: tuple containing project and activity names and duration
             Returns: integer index of choices list
         """
+        os.system('clear')
         print("----------------------------------------")
         print("Finished tracking", text[0], text[1]);
         print("Time recorded:", str(text[2]))
@@ -81,6 +96,7 @@ class TerminalUser():
                 break
         print("-----------------------------------------------------\n");
         return int(choice)
+        
     def getComment(self, text):
         """
         Get comment from user input

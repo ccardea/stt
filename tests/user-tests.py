@@ -12,7 +12,7 @@ class UserTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.user = stt_user.TerminalUser()
+        cls.user = sttuser.TerminalUser()
         return None
 
     def setUp(self):
@@ -56,7 +56,7 @@ class UserTestCase2(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.user = stt_user.TerminalUser()
+        cls.user = sttuser.TerminalUser()
         return None
 
     # @unittest.skip("Skipped testGetComent")

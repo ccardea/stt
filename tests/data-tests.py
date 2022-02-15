@@ -5,6 +5,7 @@ Created 2022-02-12
 """
 import unittest
 import sttdata
+from stt import TimeRecord
 
 class DataTestCase(unittest.TestCase):
     
@@ -24,6 +25,16 @@ class DataTestCase(unittest.TestCase):
         activities = self.data.getActivities()
         self.assertIsInstance(activities, list)
         self.assertTrue(len(activities), 5)
+
+    def testWriteRecord(self):
+        record = TimeRecord();
+        record.setStart();
+        record.project = "Project 1";
+        record.activity = "Activity 1";
+        record.comment = "Short comment here";
+        record.setStop();
+        rowcount = self.data.writeRecord(record.copy());
+        self.assertEqual(rowcount, 1);
 
 if __name__ == "__main__":
     unittest.main()

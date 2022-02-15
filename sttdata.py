@@ -54,7 +54,18 @@ class STTData():
             record: tuple of values to write
         Returns: Success or Failure?
         """
-        return
+        sql = """
+            INSERT INTO records (
+                project, activity, start, stop, duration, comment
+            )
+            VALUES (?,?,?,?,?,?)
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql, record);
+        conn.commit();
+        conn.close();
+        return cur.rowcount;
 
     def getRecords(project=None,range=None):
         """

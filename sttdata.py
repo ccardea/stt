@@ -9,11 +9,19 @@ import os.path
 
 class STTData():
 
-    __slots__ = ("test", "dir");
+    __slots__ = ("files");
 
     def __init__(self, test=False):
-        self.test = test;
-        self.dir = os.path.dirname(os.path.realpath(__file__));
+        dir = os.path.dirname(os.path.realpath(__file__));
+        self.files = {};
+        if test:
+            self.files["projects"] = os.path.join(dir, "tests/data/projects.json");
+            self.files["activities"] = os.path.join(dir, "tests/data/activities.json");
+            self.files["db"] = os.path.join(dir, "tests/data/stt.db");
+        else:
+            self.files["projects"] = os.path.join(dir, "__data__/projects.json");
+            self.files["activities"] = os.path.join(dir, "__data__/activities.json");
+            self.files["db"] = os.path.join(dir, "__data__/stt.db");
         return;
     
     def getActiveProjects(self):
@@ -21,12 +29,8 @@ class STTData():
         Read projects from data store
         Returns: list
         """
-        if self.test:
-            projectFile = os.path.join(self.dir, 'tests/data/projects.json');
-        else:
-            projectFile =os.path.join(self.dir, '__data__/projects.json');
-
-        with open(projectFile,'r') as fp:
+        
+        with open(self.files["projects"],'r') as fp:
             projects = json.load(fp)
         active = []
         for p in projects:
@@ -39,11 +43,7 @@ class STTData():
         Read activities from data store
         Returns: list
         """
-        if self.test:
-            activityFile = os.path.join(self.dir, 'tests/data/activities.json');
-        else:
-            activityFile = os.path.join(self.dir, '__data__/activities.json');
-        with open(activityFile, "r") as fp:
+        with open(self.files["activities"], "r") as fp:
             activities = json.load(fp);
         return activities;
 

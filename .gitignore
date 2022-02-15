@@ -1,3 +1,5 @@
 .venv/**
 __*__/**
 tests/__*__/**
+temp/**
+.vscode

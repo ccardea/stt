@@ -67,12 +67,35 @@ class STTData():
         conn.close();
         return cur.rowcount;
 
-    def getRecords(project=None,range=None):
+    def queryAll(self):
         """
-        Parameters:
-            range: list?
-                range of data to choose from
-        Returns: list of rows?
+        Simple Select.
+            Returns a list of rows.
+            
         """
-        return
+        sql = """
+            SELECT * FROM records
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql);
+        conn.commit();
+        results = cur.fetchall();
+        conn.close();
+        return results;
+
+    def deleteAll(self):
+        """
+        Deletes all rows from the records table.
+        Used for testing purposes
+        """
+        sql = """
+        DELETE FROM records
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql);
+        conn.commit();
+        conn.close();
+        return;
 

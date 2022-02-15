@@ -4,11 +4,11 @@ A lightweight Python time tracker
 Author C. Cardea
 Created 02-10-2022
 """
-import os.path
+# import os.path
 import sqlite3
 
-dir = os.path.dirname(os.path.realpath(__file__))
-DBFile = os.path.join(dir, "data/stt.db")
+# dir = os.path.dirname(os.path.realpath(__file__))
+# DBFile = os.path.join(dir, "data/stt.db")
 
 create_tbl_records_sql = """
     CREATE TABLE IF NOT EXISTS records (
@@ -32,8 +32,8 @@ create_idx_sql = """
     CREATE INDEX IF NOT EXISTS startIdx
         ON records (start);
 """
-def create():
-    conn = sqlite3.connect(DBFile)
+def create(path):
+    conn = sqlite3.connect(path)
     cur = conn.cursor()
     cur.execute(create_tbl_records_sql)
     conn.commit()
@@ -44,4 +44,4 @@ def create():
     return;
 
 if __name__ == "__main__":
-    create()    
+    create("stt.db")    

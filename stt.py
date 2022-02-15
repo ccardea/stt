@@ -4,7 +4,6 @@ Author C. Cardea
 Created 2022-02-12
 """
 from datetime import datetime
-import os
 import sttdata 
 import sttuser
 
@@ -117,6 +116,6 @@ class SimpleTimeTracker():
         return;
 
 if __name__ == "__main__":
-    stt = SimpleTimeTracker(test=True);
+    stt = SimpleTimeTracker();
     stt.track();
     print("Goodbye!")

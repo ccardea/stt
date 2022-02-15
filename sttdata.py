@@ -6,6 +6,7 @@ Created 2022-02-11
 import sqlite3
 import json
 import os.path
+from createdb import create
 
 class STTData():
 
@@ -23,7 +24,17 @@ class STTData():
             self.files["activities"] = os.path.join(dir, "__data__/activities.json");
             self.files["db"] = os.path.join(dir, "__data__/stt.db");
         return;
+
+    def dbExists(self):
+        if os.path.exists(self.files["db"]):
+            return True;
+        else:
+            return False;
     
+    def createDb(self):
+        create(self.files["db"]);
+        return;
+
     def getActiveProjects(self):
         """
         Read projects from data store

@@ -4,11 +4,7 @@ A lightweight Python time tracker
 Author C. Cardea
 Created 02-10-2022
 """
-# import os.path
 import sqlite3
-
-# dir = os.path.dirname(os.path.realpath(__file__))
-# DBFile = os.path.join(dir, "data/stt.db")
 
 create_tbl_records_sql = """
     CREATE TABLE IF NOT EXISTS records (

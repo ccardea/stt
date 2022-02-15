@@ -11,9 +11,12 @@ class DataTestCase(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls):
-        
-        cls.data = sttdata.STTData(test=True)
-        return ;
+        cls.data = sttdata.STTData(test=True);
+        if cls.data.dbExists():
+            cls.data.deleteAll();
+        else:
+            cls.data.createDb();
+        return;
 
     def testGetActiveProjects(self):
         projects = self.data.getActiveProjects()
@@ -35,6 +38,24 @@ class DataTestCase(unittest.TestCase):
         record.setStop();
         rowcount = self.data.writeRecord(record.copy());
         self.assertEqual(rowcount, 1);
+        results = self.data.queryAll();
+        row = results[0];
+        self.assertEqual(row[1], record.project);
+        self.assertEqual(row[2], record.activity);
+        self.assertEqual(row[3], str(record.start));
+        self.assertEqual(row[4], str(record.stop));
+        self.assertEqual(row[5], record.duration);
+        self.assertEqual(row[6], record.comment);
+        self.data.deleteAll();
+        results = self.data.queryAll();
+        self.assertEqual(len(results), 0);
+        return;
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.data.deleteAll();
+        return None;
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -6,7 +6,8 @@ Created 2022-02-12
 
 import sttdata, stt as app
 import unittest
-import random, datetime
+import random
+from datetime import datetime
 
 class TimeRecordTestCase(unittest.TestCase):
 
@@ -27,22 +28,22 @@ class TimeRecordTestCase(unittest.TestCase):
 
     def testSetStart(self):
         self.record.setStart();
-        self.assertIsInstance(self.record.start, datetime.datetime);
+        self.assertIsInstance(self.record.start, datetime);
         return;
 
     def testSetStop(self):
-        self.record.start = datetime.datetime.now();
+        self.record.setStart();
         self.record.setStop();
-        self.assertIsInstance(self.record.stop, datetime.datetime);
-        self.assertIsInstance(self.record.duration,datetime.timedelta);
+        self.assertIsInstance(self.record.stop, datetime);
+        self.assertIsInstance(self.record.duration, float);
         return;
 
     def testCopy(self):
         self.record.project = "project 1"
         self.record.activity = "activity 1"
-        self.record.start = "2022:02:12:07:00:00"
-        self.record.stop = "2022:02:12:09:00:00"
-        self.record.duration = "02:00:00.000"
+        self.record.setStart();
+        self.record.setStop();
+        # self.record.duration = "02:00:00.000"
         self.record.comment = "Coding coding coding"
         record = self.record.copy()
         self.assertIsInstance(record,tuple)
@@ -139,7 +140,7 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(choice, 0);
         self.assertEqual(choice, self.App.flags)
         self.assertIsNotNone(self.App.record.start)
-        self.assertIsInstance(self.App.record.start, datetime.datetime)
+        self.assertIsInstance(self.App.record.start, datetime)
 
         choice = self.App.chooseStart();
         self.assertEqual(choice, 1);

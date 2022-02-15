@@ -4,7 +4,6 @@ Author C. Cardea
 Created 2022-02-12
 """
 from datetime import datetime
-import os
 import sttdata 
 import sttuser
 
@@ -27,11 +26,13 @@ class TimeRecord():
 
     def setStop(self):
         self.stop = datetime.now();
-        self.duration = self.stop - self.start;
+        temp = self.stop - self.start;
+        self.duration = temp.total_seconds();
         return;
 
     def copy(self):
-        temp = [self.project,self.activity,self.start,self.stop,self.duration,self.comment];
+        temp = [self.project,self.activity,self.start,self.stop,
+            self.duration, self.comment];
         return tuple(temp[:]);
 
 class SimpleTimeTracker():
@@ -115,6 +116,6 @@ class SimpleTimeTracker():
         return;
 
 if __name__ == "__main__":
-    stt = SimpleTimeTracker(test=True);
+    stt = SimpleTimeTracker();
     stt.track();
     print("Goodbye!")

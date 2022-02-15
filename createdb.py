@@ -4,9 +4,7 @@ A lightweight Python time tracker
 Author C. Cardea
 Created 02-10-2022
 """
-from re import L
 import sqlite3
-DBFile = "/home/ccardea/repos/stt/__data__/stt.db"
 
 create_tbl_records_sql = """
     CREATE TABLE IF NOT EXISTS records (
@@ -16,7 +14,7 @@ create_tbl_records_sql = """
         start TEXT NOT NULL,
         stop TEXT NOT NULL,
         duration REAL,
-        note TEXT
+        comment TEXT
     );
 """
 
@@ -30,9 +28,8 @@ create_idx_sql = """
     CREATE INDEX IF NOT EXISTS startIdx
         ON records (start);
 """
-
-if __name__ == "__main__":
-    conn = sqlite3.connect(DBFile)
+def create(path):
+    conn = sqlite3.connect(path)
     cur = conn.cursor()
     cur.execute(create_tbl_records_sql)
     conn.commit()
@@ -40,3 +37,7 @@ if __name__ == "__main__":
     
     conn.commit()
     conn.close()
+    return;
+
+if __name__ == "__main__":
+    create("stt.db")    

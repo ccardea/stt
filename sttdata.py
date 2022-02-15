@@ -6,6 +6,7 @@ Created 2022-02-11
 import sqlite3
 import json
 import os.path
+from createdb import create
 
 class STTData():
 
@@ -23,7 +24,17 @@ class STTData():
             self.files["activities"] = os.path.join(dir, "__data__/activities.json");
             self.files["db"] = os.path.join(dir, "__data__/stt.db");
         return;
+
+    def dbExists(self):
+        if os.path.exists(self.files["db"]):
+            return True;
+        else:
+            return False;
     
+    def createDb(self):
+        create(self.files["db"]);
+        return;
+
     def getActiveProjects(self):
         """
         Read projects from data store
@@ -54,14 +65,48 @@ class STTData():
             record: tuple of values to write
         Returns: Success or Failure?
         """
-        return
+        sql = """
+            INSERT INTO records (
+                project, activity, start, stop, duration, comment
+            )
+            VALUES (?,?,?,?,?,?)
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql, record);
+        conn.commit();
+        conn.close();
+        return cur.rowcount;
 
-    def getRecords(project=None,range=None):
+    def queryAll(self):
         """
-        Parameters:
-            range: list?
-                range of data to choose from
-        Returns: list of rows?
+        Simple Select.
+            Returns a list of rows.
+            
         """
-        return
+        sql = """
+            SELECT * FROM records
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql);
+        conn.commit();
+        results = cur.fetchall();
+        conn.close();
+        return results;
+
+    def deleteAll(self):
+        """
+        Deletes all rows from the records table.
+        Used for testing purposes
+        """
+        sql = """
+        DELETE FROM records
+        """
+        conn = sqlite3.connect(self.files["db"]);
+        cur = conn.cursor();
+        cur.execute(sql);
+        conn.commit();
+        conn.close();
+        return;
 

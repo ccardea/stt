@@ -1,6 +1,6 @@
 # Simple Time Tracker
 
-A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system. 
+*A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system.* 
 
 ## What Does Lightweight Mean?
 - Single user
@@ -21,7 +21,7 @@ STT follows three key design principles that contributed a great deal to the suc
 2. Application: stt.py
 3. Data: sttdata.py
 
-The application interfaces with the user interface and the data layer. The user interface and data layer never interface directly. In theory this allows any layer to be modified without affecting the other layers. That works in the current configuration, but since the application layer is designed to work on a terminal, changing to a graphical or web-based user interface would require some minor modifications to the application.
+The application interfaces with the user interface and the data layer. The user interface and data layer never interface directly. In theory this allows one layer to be modified without affecting the other layers. In practice, it works reasonably well, although the application is tied fairly closely to the user interface.
 
 ### Unit Tests
 Using unit tests from the outset had a great impact on the design of the code. I specifially designed each piece of code so that it could be automatically tested using the unittest module. The result is very clean and bug-free code.
@@ -84,9 +84,9 @@ In a terminal, enter "python3 local/path/stt.py"
 
 ### Use Simple Time Tracker
 To use STT outside of test mode:
-- Create a directory called `__data__` in the root directory where you installed the files.
-- Copy createdb.py to the `__data__` directory and run it
-- Copy projects.json and activities.json from the tests/data directory and modify them to suit your needs.
+- Navigate to the directory where you installed Simple Time Tracker.
+- At the terminal prompt, enter: "python3 setup.py"
+- In the `__data__` directory, modify `projects.json` and `activities.json` to suit your needs.
 - If you changed the test parameter in stt.py to `True`, change it back to `False`.
 - Enjoy!
 

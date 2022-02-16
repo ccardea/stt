@@ -108,7 +108,7 @@ class TerminalUser():
         print("Tracking:", text[0], text[1]);
         print("Please type a short comment and press enter to stop tracking.")
         while True:
-            comment = input(">>")
+            comment = input("sst:> ")
             if not self.validate(comment):
                 print("Printable alphanumeric characters only please.")
                 continue

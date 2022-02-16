@@ -3,7 +3,7 @@ Simple Time Tracker
 Author C. Cardea
 Created 2022-02-12
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 import sttdata 
 import sttuser
 
@@ -80,7 +80,7 @@ class SimpleTimeTracker():
 
     def chooseNext(self):
         choices = ["Resume previous activity", "New project", "New activity", "Exit program"];
-        text = (self.previous[0], self.previous[1], self.previous[4]);
+        text = (self.previous[0], self.previous[1], timedelta(self.previous[4]));
         choice = self.user.chooseNext(choices,text);
         if choice == 0:
             self.flags = 0;
@@ -116,6 +116,6 @@ class SimpleTimeTracker():
         return;
 
 if __name__ == "__main__":
-    stt = SimpleTimeTracker();
+    stt = SimpleTimeTracker(test=False);
     stt.track();
     print("Goodbye!")

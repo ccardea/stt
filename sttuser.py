@@ -53,8 +53,8 @@ class TerminalUser():
         os.system('clear')
         print("Please verify project and activity before continuing.")
         print("----------------------")
-        print(text[0])
-        print(text[1])
+        print("Project:",text[0])
+        print("Activity:", text[1])
         print("----------------------")
         return self.getInput(choices);
 

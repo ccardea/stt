@@ -80,7 +80,7 @@ class SimpleTimeTracker():
 
     def chooseNext(self):
         choices = ["Resume previous activity", "New project", "New activity", "Exit program"];
-        text = (self.previous[0], self.previous[1], timedelta(self.previous[4]));
+        text = (self.previous[0], self.previous[1], timedelta(seconds=self.previous[4]));
         choice = self.user.chooseNext(choices,text);
         if choice == 0:
             self.flags = 0;

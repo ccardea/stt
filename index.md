@@ -12,6 +12,7 @@ It occurred to me that potential employers might want to know how much time I sp
 - Uses a single database table.
 - Easily configured and managed using two simple JSON files.
 - Easy to install and run.
+- Thoroughly tested.
 
 ## Key Design Principles
 
@@ -25,7 +26,7 @@ STT follows three key design principles that contributed a great deal to the suc
 2. Application: stt.py
 3. Data: sttdata.py
 
-The application interfaces with both the user interface and the data layer. The user interface and data layer are completely separate. In theory this allows one layer to be modified without affecting the other layers. In practice, it works well. For example, to implement a graphical or web-based user interface would require only minor changes to the application, and none to the data layer.
+The application layer interfaces with both the user interface and the data layer. The user interface and data layer are completely separate. In theory this allows one layer to be modified without affecting the other layers. In practice, it works well. For example, to implement a graphical or web-based user interface would require only minor changes to the application, and none to the data layer.
 
 ### Unit Tests
 Using unit tests from the outset had a great impact on the design of the code. I specifially designed each piece of code so that it could be automatically tested using the unittest module. This helped the development process and led to very clean and bug-free code.
@@ -39,4 +40,4 @@ Two of my objectives for this project were to keep it simple and to get it up an
 Simple Time Tracker is very easy to install and run. I encourage everyone to give it a try. You can download or clone the project at https://www.github.com/ccardea/stt
 
 ### Development Time
-9 days from concept to this point, including researching SQLite3 and SQLite syntax, which I had not used before, and learning a couple more modules that were new to me.
+2022-02-11 - 2022-02-16: 6 days inclusive.

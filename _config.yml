@@ -1,10 +1,13 @@
 title: C. Cardea
-author:
-  name: C. Cardea
-  email: "ccardea@gmail.com"
+site:
+  author:
+    name: C. Cardea
+    email: "ccardea@gmail.com"
 description: Demonstrating Useful Skills.
 #header_pages: 
 
 theme: minima
-social_links:
-  github: ccardea
+
+minima:
+  social_links:
+    github: ccardea

@@ -1,6 +1,3 @@
----
-layout: home
----
 ## Simple Time Tracker
 
 *A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system.* 

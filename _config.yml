@@ -1,0 +1,3 @@
+theme: minima
+title: Simple Time Tracker
+description: A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system.

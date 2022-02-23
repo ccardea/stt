@@ -1,10 +1,10 @@
-theme: minima
 title: C. Cardea
-description: A simple and useful project for keeping time records.
-#header_pages: 
 author:
   name: C. Cardea
-  email: ccardea@gmail.com
+  email: "ccardea@gmail.com"
+description: Demonstrating Useful Skills.
+#header_pages: 
 
+theme: minima
 social_links:
-  github: ccardea/stt
+  github: ccardea

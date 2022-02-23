@@ -7,7 +7,7 @@ site:
 
 #header_pages: 
 
-theme: minima
+theme: jekyll-theme-architect
 
 minima:
   social_links:

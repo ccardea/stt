@@ -1,14 +1,3 @@
 title: Simple Time Tracker
 description: Demonstrating Useful Skills.
-site:
-  author:
-    name: C. Cardea
-    email: ccardea@gmail.com
-
-#header_pages: 
-
 theme: jekyll-theme-architect
-
-minima:
-  social_links:
-    github: ccardea

@@ -1,9 +1,10 @@
-title: C. Cardea
+title: Simple Time Tracker
+description: Demonstrating Useful Skills.
 site:
   author:
     name: C. Cardea
-    email: "ccardea@gmail.com"
-description: Demonstrating Useful Skills.
+    email: ccardea@gmail.com
+
 #header_pages: 
 
 theme: minima

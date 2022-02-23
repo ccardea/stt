@@ -1,5 +1,6 @@
 .venv/**
 __*__/**
 tests/__*__/**
+tests/data/__*__/**
 temp/**
 .vscode

@@ -6,7 +6,7 @@ title: Simple Time Tracker
 *A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system.* 
 
 ## Motivation
-I wanted to track how much time I'm spending on projects. It occurred to me that employers might be interested in that too. I probably could have used one of the more than 10,000 time tracker projects listed on PyPi, but I also needed a project to refresh my SQL skills. Finally I wanted some example code that would be easy to download and run. Thus, Simple Time Tracker was born.
+I wanted to track how much time I spend working on projects. I probably could have used one of the more than 10,000 time tracker projects listed on PyPi, but I also needed a project to get me started using SQL again. Finally I wanted some example code that would be easy to download and run. Thus, Simple Time Tracker was born.
 
 ## Lightweight Features
 - Single user.
@@ -37,10 +37,10 @@ Using unit tests from the outset had a great impact on the design of the code. I
 Each module is tested separately and the application as a whole can be tested by passing `test=True` as a parameter to the startup code.
 
 ### Simple Configuration
-Two of my objectives for this project were to keep it simple and to get it up and running quickly. Towards those ends, I decided that, instead of a full relational database with foreign keys and referential integrity, I would use a single database table for the time records, and JSON files for projects and activities. The JSON files are simple and flexible, and can be modified in any editor. For a project like this, the ease of administration far outweighs any potential loss of data integrity. For more details, please see README.md on the main project page. 
+Two of my objectives for this project were to keep it simple and to get it up and running quickly. Towards those ends, I decided that, instead of a full relational database with foreign keys and referential integrity, I would use a single database table for the time records, and JSON files for projects and activities. The JSON files are simple and flexible, and can be modified in any editor. For a project like this, the ease of administration far outweighs any potential loss of data integrity. For more details, please see README.md on the [main project page](https://www.github.com/ccardea/stt). 
 
 ## Easy to Install and Run
-Simple Time Tracker is very easy to install and run. I encourage everyone to give it a try. You can download or clone the project [here](https://www.github.com/ccardea/stt).
+Simple Time Tracker is very easy to install and run. I encourage everyone to give it a try. You can download or clone the project from the [Github Repository](https://www.github.com/ccardea/stt).
 
 ## Development Time
 2022-02-11 - 2022-02-16: 6 days inclusive.

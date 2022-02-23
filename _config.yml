@@ -1,3 +1,11 @@
 theme: minima
 title: C. Cardea
-description: A lightweight Python script for recording time spent working on projects. It is designed for a single user on a Linux system.
+description: A simple and useful project for keeping time records.
+header_pages:
+  - 
+author:
+  name: C. Cardea
+  email: ccardea@gmail.com
+
+social_links:
+  github: ccardea/stt

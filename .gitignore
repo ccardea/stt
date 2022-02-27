@@ -4,3 +4,4 @@ tests/__*__/**
 tests/data/__*__/**
 temp/**
 .*
+__pycache__

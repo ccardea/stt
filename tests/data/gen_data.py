@@ -152,6 +152,7 @@ class DataBuilder():
         conn.close();
         return;
 
-
-
-    
+if __name__ == "__main__":
+    builder = DataBuilder();
+    builder.buildData();
+    builder.insertData();

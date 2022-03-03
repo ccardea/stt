@@ -64,7 +64,7 @@ Each project to be tracked must have an entry with "name" and "status" keys. Onl
 The activities.json file is just a list. It can be modified at any time without affecting the program operation or existing data.
 
 ### Reports
-At this time STT has not implemented any reports. It is a single table database file and you can easily create your own reports if you know SQL. STT uses the SQLite3 rdbms that is included with Python. See the createdb.py file for the table schema.
+Creating reports from STT data is completely flexible and can be output in a variety of formats. No reports have been hard-coded into the program, but sample reports and the code to create them can be found in stt-reports.ipynb, which can be viewed in this repository or on [Google Colab](https://colab.research.google.com/drive/1Q1hwEd0YKXMVSqGoksvXiFHHt1b7UmYx?usp=sharing)
 
 ### Note To Developers
 Tests are located in the tests folder, but must run in the root directory.

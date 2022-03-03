@@ -43,4 +43,5 @@ Simple Time Tracker is very easy to install and run. I encourage everyone to giv
 Creating reports from STT data is completely flexible and can be output in a variety of formats. No reports have been hard-coded into the program, but sample reports and the code to create them can be found in a Jupyter Notebook, which can be viewed in the repository or on [Google Colab](https://colab.research.google.com/drive/1Q1hwEd0YKXMVSqGoksvXiFHHt1b7UmYx?usp=sharing)
 
 ### Development Time
-2022-02-11 - 2022-02-16: 6 days inclusive.
+Application: 2022-02-11 - 2022-02-16: 6 days inclusive.
+Sample Reports: 2022-02-27: 1 day.
